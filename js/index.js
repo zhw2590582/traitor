@@ -1,3 +1,5 @@
+var $input = document.querySelector(".input");
+var $btn = document.querySelector(".btn");
 var $canvas = document.querySelector("canvas");
 var ctx = $canvas.getContext("2d");
 
@@ -79,6 +81,10 @@ Promise.all([
   waitForWebfonts(["pixel"])
 ]).then(function([$bg, $cover]) {
   darw($bg, $cover, "有内鬼，终止交易！");
+  $btn.addEventListener("click", function() {
+    var text = $input.value.trim();
+    text && darw($bg, $cover, text);
+  });
 });
 
 function darw($bg, $cover, text) {
@@ -90,7 +96,7 @@ function darw($bg, $cover, text) {
   ctx.save();
   ctx.translate($canvas.width / 2, $canvas.height / 2);
   ctx.rotate((Math.PI / 180) * 9.5);
-  drawText(text, -320, -80, 640, 90);
+  drawText(text, -320, -80, 630, 90);
   ctx.font = "60px pixel";
   ctx.fillStyle = "#76b8d5";
   ctx.fillText(text.length + "/100", text.length >= 10 ? 100 : 130, -180);
