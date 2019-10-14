@@ -41,9 +41,11 @@ body {
 .header .input {
   flex: 1;
   height: 2rem;
+  line-height: 2rem;
   border: 1px solid #000;
   padding: 0 0.5rem;
   outline: none;
+  border-radius: 0;
 }
 
 .header .btn {
