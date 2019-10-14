@@ -9,12 +9,12 @@
 We accept donations through these channels:
 
 - [Paypal](https://www.paypal.me/harveyzack)
-- [WeChat Pay](./images/wechatpay.jpg)
-- [Alipay](./images/alipay.jpg)
+- [WeChat Pay](./img/wechatpay.jpg)
+- [Alipay](./img/alipay.jpg)
 
 ## QQ Group
 
-![QQ Group](./images/qqgroup.png)
+![QQ Group](./img/qqgroup.png)
 
 ## License
 
