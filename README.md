@@ -1,6 +1,6 @@
 # traitor
 
-> 有内鬼终止交易。
+> 有内鬼，终止交易！
 
 ![Screenshot](./img/screenshot.png)
 

@@ -99,7 +99,7 @@ function darw($bg, $cover, text) {
   ctx.clearRect(0, 0, $canvas.width, $canvas.height);
   $canvas.style.letterSpacing = "5px";
   ctx.drawImage($bg, 0, 0);
-  ctx.font = "46px pixel";
+  ctx.font = "45px pixel";
   ctx.fillStyle = "#333";
   ctx.save();
   ctx.translate($canvas.width / 2, $canvas.height / 2);
