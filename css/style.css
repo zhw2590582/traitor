@@ -18,7 +18,13 @@ body {
   background: #f4f5f5;
 }
 
+@font-face {
+  font-family: "pixel";
+  src: url("../font/pixel.ttf") format("truetype");
+}
+
 .container {
+  font-family: pixel;
   max-width: 600px;
   margin: 0 auto;
   display: flex;
@@ -29,5 +35,5 @@ body {
 }
 
 .canvas {
-    width: 100%;
+  width: 100%;
 }
