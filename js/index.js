@@ -1,12 +1,17 @@
 var $input = document.querySelector(".input");
 var $btn = document.querySelector(".btn");
-var $canvas = document.querySelector("canvas");
+var $img = document.querySelector(".img");
+
+var $canvas = document.createElement("canvas");
+$canvas.width = 1066;
+$canvas.height = 960;
 var ctx = $canvas.getContext("2d");
 
 function loadImg(url) {
   return new Promise(function(resolve) {
     var img = new Image();
     img.onload = function() {
+      console.log(url);
       resolve(img);
     };
     img.src = url;
@@ -43,6 +48,7 @@ function waitForWebfonts(fonts) {
             if (interval) {
               clearInterval(interval);
             }
+
             if (loadedFonts == fonts.length) {
               resolve();
               return true;
@@ -76,11 +82,12 @@ function drawText(text, x, y, maxWidth, lineHeight) {
 }
 
 Promise.all([
-  loadImg("./img/bg.webp"),
+  loadImg("./img/demo.png"),
+  loadImg("./img/bg.png"),
   loadImg("./img/cover.png"),
   waitForWebfonts(["pixel"])
-]).then(function([$bg, $cover]) {
-  darw($bg, $cover, "有内鬼，终止交易！");
+]).then(function([$demo, $bg, $cover]) {
+  ctx.drawImage($demo, 0, 0);
   $btn.addEventListener("click", function() {
     var text = $input.value.trim();
     text && darw($bg, $cover, text);
@@ -91,7 +98,7 @@ function darw($bg, $cover, text) {
   ctx.clearRect(0, 0, $canvas.width, $canvas.height);
   $canvas.style.letterSpacing = "5px";
   ctx.drawImage($bg, 0, 0);
-  ctx.font = "62px pixel";
+  ctx.font = "60px pixel";
   ctx.fillStyle = "#333";
   ctx.save();
   ctx.translate($canvas.width / 2, $canvas.height / 2);
@@ -105,5 +112,6 @@ function darw($bg, $cover, text) {
   ctx.globalCompositeOperation = "darken";
   ctx.globalAlpha = 0.1;
   ctx.drawImage($cover, 0, 0);
+  $img.src = $canvas.toDataURL("image/png");
   ctx.restore();
 }

@@ -62,8 +62,8 @@ body {
   flex: 1;
 }
 
-.main .canvas {
-  width: 100%;
+.main .img {
+  max-width: 100%;
   background: #000;
 }
 
