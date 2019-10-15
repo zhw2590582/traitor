@@ -5,7 +5,7 @@ var $img = document.querySelector(".img");
 var $canvas = document.createElement("canvas");
 $canvas.width = 800;
 $canvas.height = 720;
-$canvas.style.display = 'none';
+$canvas.style.display = "none";
 document.body.appendChild($canvas);
 var ctx = $canvas.getContext("2d");
 
@@ -85,34 +85,28 @@ function drawText(text, x, y, maxWidth, lineHeight) {
 Promise.all([
   loadImg("./img/demo.png"),
   loadImg("./img/bg.png"),
-  loadImg("./img/cover.png"),
   waitForWebfonts(["pixel"])
-]).then(function([$demo, $bg, $cover]) {
+]).then(function([$demo, $bg]) {
   ctx.drawImage($demo, 0, 0);
   $btn.addEventListener("click", function() {
     var text = $input.value.trim();
-    text && darw($bg, $cover, text);
+    text && darw($bg, text);
   });
 });
 
-function darw($bg, $cover, text) {
+function darw($bg, text) {
   ctx.clearRect(0, 0, $canvas.width, $canvas.height);
-  $canvas.style.letterSpacing = "5px";
+  $canvas.style.letterSpacing = "0.35rem";
   ctx.drawImage($bg, 0, 0);
-  ctx.font = "45px pixel";
+  ctx.font = "2.8rem pixel";
   ctx.fillStyle = "#333";
   ctx.save();
   ctx.translate($canvas.width / 2, $canvas.height / 2);
   ctx.rotate((Math.PI / 180) * 9.5);
   drawText(text, -240, -60, 460, 60);
-  ctx.font = "42px pixel";
+  ctx.font = "2.8rem pixel";
   ctx.fillStyle = "#76b8d5";
-  ctx.fillText(text.length + "/100", text.length >= 10 ? 70 : 100, -135);
+  ctx.fillText(text.length + "/100", text.length >= 10 ? 65 : 95, -135);
   ctx.restore();
-  ctx.save();
-  ctx.globalCompositeOperation = "darken";
-  ctx.globalAlpha = 0.1;
-  ctx.drawImage($cover, 0, 0);
   $img.src = $canvas.toDataURL("image/png");
-  ctx.restore();
 }
